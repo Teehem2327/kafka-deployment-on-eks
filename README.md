@@ -169,8 +169,8 @@ kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
 ## Open browser:
 
 ```bash
-(http://localhost:3000
-)
+http://localhost:3000
+
 
 ```
 ## Default Login
@@ -178,8 +178,8 @@ kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
 Username: admin
 Password: prom-operator
 
-
 ```
+![eks Architecture](screenshots/![eks Architecture](screenshots/kafka6.png)
 
 ---
 
