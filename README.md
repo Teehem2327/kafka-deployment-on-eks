@@ -90,7 +90,7 @@ kubectl get pods -n confluent
 * Control Center
 
 ---
-
+![eks Architecture](screenshots/kafka6.png)
 ### Step 5: Access Confluent Control Center
 
 Port-forward the Control Center service:
@@ -104,7 +104,7 @@ Open in your browser:
 ```
 http://localhost:9021
 ```
-
+![eks Architecture](screenshots/kafka7 control center.png)
 Validation checks:
 
 * Confirm the `elastic-0` topic exists
@@ -118,6 +118,7 @@ Validation checks:
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 
 helm install monitoring prometheus-community/kube-prometheus-stack \
@@ -147,7 +148,7 @@ When using `kubectl port-forward`, avoid local port conflicts. Example:
 ```bash
 kubectl port-forward svc/monitoring-kube-prometheus-prometheus 19090:9090 -n monitoring
 ```
-
+![eks Architecture](screenshots/kafka prometheus.png)
 ---
 
 ## 3. Kafka Metrics Scraping with Prometheus
@@ -158,6 +159,26 @@ Kafka brokers deployed by CFK expose Prometheus metrics on port:
 
 ```
 7778
+```
+
+## Access Grafana
+```bash
+kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80
+
+```
+## Open browser:
+
+```bash
+(http://localhost:3000
+)
+
+```
+## Default Login
+```bash
+Username: admin
+Password: prom-operator
+
+
 ```
 
 ---
