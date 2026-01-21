@@ -1,0 +1,32 @@
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+  namespace: confluent
+spec:
+  replicas: 3
+  image:
+    application: confluentinc/cp-server:7.5.0
+    init: confluentinc/confluent-init-container:2.7.0
+  dataVolumeCapacity: 500Gi
+  metricReporter:
+    enabled: true
+  podTemplate:
+    podSecurityContext:
+      fsGroup: 1000
+      runAsUser: 1000
+      runAsNonRoot: true
+    resources:
+      requests:
+        cpu: "1"
+        memory: "4Gi"
+  # Enable JMX metrics
+  metrics:
+    prometheus:
+      blacklist:
+        - "kafka.consumer:type=*,id=*"
+        - "kafka.consumer:type=*,client-id=*"
+        - "kafka.producer:type=*,id=*"
+        - "kafka.producer:type=*,client-id=*"
+      rules:
+        - pattern: ".*"
