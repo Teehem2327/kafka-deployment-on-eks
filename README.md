@@ -1,4 +1,4 @@
-Absolutely — here’s a **GitHub-ready, clean, copy-pasteable Markdown version** of your documentation.
+Absolutely, here’s a **GitHub-ready, clean, copy-pasteable Markdown version** of your documentation.
 It’s formatted to drop straight into a repo as `README.md`, with consistent headings, fenced code blocks, and no chatty text.
 
 You can paste this **as-is** into GitHub 👇
@@ -6,7 +6,7 @@ You can paste this **as-is** into GitHub 👇
 ---
 
 ````md
-# Confluent Kafka on Kubernetes (EKS) — Full Implementation & Monitoring Documentation
+# Confluent Kafka on Kubernetes (EKS):  Full Implementation & Monitoring Documentation
 
 This document describes the end-to-end deployment of the **Confluent Kafka Platform** on **Kubernetes (EKS)** using the **Confluent for Kubernetes (CFK) Operator**, running in **KRaft mode**, with **Prometheus and Grafana** for observability.
 
