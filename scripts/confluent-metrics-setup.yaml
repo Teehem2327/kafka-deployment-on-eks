@@ -1,0 +1,154 @@
+---
+# JMX Exporter ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jmx-exporter-config
+  namespace: confluent
+data:
+  config.yml: |
+    lowercaseOutputName: true
+    lowercaseOutputLabelNames: true
+    whitelistObjectNames:
+      - kafka.server:*
+      - kafka.cluster:*
+      - kafka.controller:*
+      - kafka.network:*
+      - kafka.log:*
+      - java.lang:*
+    rules:
+      - pattern: ".*"
+---
+# ServiceMonitor for Kafka
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: confluent-kafka
+  namespace: monitoring
+  labels:
+    app: kafka
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: kafka
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: pod
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: namespace
+---
+# ServiceMonitor for Schema Registry
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: confluent-schemaregistry
+  namespace: monitoring
+  labels:
+    app: schemaregistry
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: schemaregistry
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+---
+# ServiceMonitor for Connect
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: confluent-connect
+  namespace: monitoring
+  labels:
+    app: connect
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: connect
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+---
+# ServiceMonitor for ksqlDB
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: confluent-ksqldb
+  namespace: monitoring
+  labels:
+    app: ksqldb
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: ksqldb
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+---
+# ServiceMonitor for Control Center
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: confluent-controlcenter
+  namespace: monitoring
+  labels:
+    app: controlcenter
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: controlcenter
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+---
+# PodMonitor as fallback to catch all Confluent pods with prometheus port
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: confluent-pods
+  namespace: monitoring
+  labels:
+    app: confluent
+    release: monitoring
+spec:
+  selector:
+    matchLabels:
+      platform.confluent.io/type: kafka
+  namespaceSelector:
+    matchNames:
+      - confluent
+  podMetricsEndpoints:
+    - port: prometheus
+      interval: 30s
+      path: /metrics
+    - port: jmx
+      interval: 30s
+      path: /metrics
