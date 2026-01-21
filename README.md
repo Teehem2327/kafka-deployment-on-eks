@@ -1,11 +1,4 @@
-Absolutely, here’s a **GitHub-ready, clean, copy-pasteable Markdown version** of your documentation.
-It’s formatted to drop straight into a repo as `README.md`, with consistent headings, fenced code blocks, and no chatty text.
-
-You can paste this **as-is** into GitHub 👇
-
 ---
-
-````md
 # Confluent Kafka on Kubernetes (EKS):  Full Implementation & Monitoring Documentation
 
 This document describes the end-to-end deployment of the **Confluent Kafka Platform** on **Kubernetes (EKS)** using the **Confluent for Kubernetes (CFK) Operator**, running in **KRaft mode**, with **Prometheus and Grafana** for observability.
@@ -17,7 +10,7 @@ This document describes the end-to-end deployment of the **Confluent Kafka Platf
 Before starting, ensure the following are available:
 
 1. A running **Kubernetes cluster** (EKS or equivalent)
-![eks](screenshots/eks1.png)
+![eks Architecture](screenshots/eks1.png)
 2. `kubectl` installed and configured with cluster access
 3. `Helm v3` installed
 4. Internet access to pull Helm charts and container images
@@ -35,7 +28,6 @@ Set an environment variable pointing to the Confluent KRaft quickstart manifests
 export TUTORIAL_HOME="https://raw.githubusercontent.com/confluentinc/confluent-kubernetes-examples/master/quickstart-deploy/kraft-quickstart"
 ````
 
----
 
 ### Step 2: Create and switch to the Confluent namespace
 
