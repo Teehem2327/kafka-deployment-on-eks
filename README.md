@@ -11,10 +11,12 @@ Before starting, ensure the following are available:
 
 1. A running **Kubernetes cluster** (EKS or equivalent)
 ![eks Architecture](screenshots/eks1.png)
-2. `kubectl` installed and configured with cluster access
-3. `Helm v3` installed
-4. Internet access to pull Helm charts and container images
-5. Dynamic storage provisioner enabled (for PersistentVolumes)
+![eks Architecture](screenshots/eks2.png)
+![eks Architecture](screenshots/eks3.png)
+3. `kubectl` installed and configured with cluster access
+4. `Helm v3` installed
+5. Internet access to pull Helm charts and container images
+6. Dynamic storage provisioner enabled (for PersistentVolumes)
 
 ---
 
@@ -27,7 +29,7 @@ Set an environment variable pointing to the Confluent KRaft quickstart manifests
 ```bash
 export TUTORIAL_HOME="https://raw.githubusercontent.com/confluentinc/confluent-kubernetes-examples/master/quickstart-deploy/kraft-quickstart"
 ````
-
+![eks Architecture](screenshots/kafka5.png)
 
 ### Step 2: Create and switch to the Confluent namespace
 
@@ -48,7 +50,7 @@ helm repo update
 
 helm upgrade --install confluent-operator confluentinc/confluent-for-kubernetes
 ```
-
+![eks Architecture](screenshots/kafka6.png)
 Verify the operator pod is running:
 
 ```bash
