@@ -316,11 +316,3 @@ kubectl apply -f prometheus-kafka-connect-servicemonitor.yaml
   [https://github.com/prometheus/jmx_exporter](https://github.com/prometheus/jmx_exporter)
 
 ```
-
----
-
-### ✅ Optional (Recommended for GitHub Repo)
-
-**Suggested repo structure:**
-
-```
