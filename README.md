@@ -324,19 +324,3 @@ kubectl apply -f prometheus-kafka-connect-servicemonitor.yaml
 **Suggested repo structure:**
 
 ```
-
-confluent-kafka-k8s/
-├── README.md
-├── monitoring/
-│   ├── kafka-servicemonitor.yaml
-│   └── prometheus-kafka-connect-servicemonitor.yaml
-
-```
-
-If you want, next I can:
-- 📊 Draw a **clean architecture + metrics flow diagram**
-- 📦 Turn this into a **take-home interview submission**
-- 📄 Convert it into a **PDF / Confluence-style doc**
-
-Just say the word.
-```
