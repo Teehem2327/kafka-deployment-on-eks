@@ -9,7 +9,7 @@ This document describes the end-to-end deployment of the **Confluent Kafka Platf
 
 Before starting, ensure the following are available:
 
-1. A running **Kubernetes cluster** (EKS or equivalent)
+1. A running Kubernetes cluster (Amazon EKS or equivalent) with core system add-ons enabled (CoreDNS, kube-proxy, VPC CNI, Metrics Server, EBS CSI Driver)
 ![eks Architecture](screenshots/eks1.png)
 ![eks Architecture](screenshots/eks2.png)
 ![eks Architecture](screenshots/eks3.png)
