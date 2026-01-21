@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kafka
+  namespace: monitoring
+  labels:
+    release: kube-prometheus
+spec:
+  selector:
+    matchLabels:
+      app: kafka
+      confluent-platform: "true"
+      type: kafka
+  namespaceSelector:
+    matchNames:
+      - confluent
+  endpoints:
+    - port: jmx      # MUST match the port name in kafka svc
+      interval: 30s
+      scheme: http
