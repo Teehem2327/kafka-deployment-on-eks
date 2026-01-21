@@ -18,7 +18,7 @@ Before starting, ensure the following are available:
 
 1. A running **Kubernetes cluster** (EKS or equivalent)
 2. `kubectl` installed and configured with cluster access
-3. **Helm v3** installed
+3. `Helm v3` installed
 4. Internet access to pull Helm charts and container images
 5. Dynamic storage provisioner enabled (for PersistentVolumes)
 
