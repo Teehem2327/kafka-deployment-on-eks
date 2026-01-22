@@ -91,6 +91,9 @@ kubectl get pods -n confluent
 
 ---
 ![eks Architecture](screenshots/kafka6.png)
+### Add StorageClass.yaml
+This can be found in the script directory
+
 ### Step 5: Access Confluent Control Center
 
 Port-forward the Control Center service:
