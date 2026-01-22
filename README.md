@@ -90,6 +90,7 @@ kubectl get pods -n confluent
 * Control Center
 
 ---
+
 ![eks Architecture](screenshots/kafka6.png)
 ### Add StorageClass.yaml
 This can be found in the script directory
